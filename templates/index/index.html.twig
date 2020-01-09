@@ -1,20 +1,45 @@
-{% extends 'root.html.twig' %}
-
-{% block title %}Hello IndexController!{% endblock %}
-
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello BOB {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'D:/Documents/Ynov/2019-2020/B2/sf4/src/Controller/IndexController.php'|file_link(0) }}">src/Controller/IndexController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'D:/Documents/Ynov/2019-2020/B2/sf4/templates/index/index.html.twig'|file_link(0) }}">templates/index/index.html.twig</a></code></li>
-    </ul>
+{% extends 'root.html.twig' %} {% block title %}Bienvenue !{% endblock %} {%
+block body %}
+<div
+  class="uk-background-cover uk-flex uk-flex-center uk-flex-middle uk-flex-column"
+  style="height: 100vh; background: linear-gradient(to bottom, rgba(0, 0, 0, 0.26), rgba(19, 19, 19, 0.801)), url(/img/bg.jpg);"
+>
+  <h1 class="uk-heading-large" style="color: #DDD;">
+    MON SUPER SITE
+  </h1>
+  <div class="uk-margin-top">
+    <a
+      href="{{ path('presentation') }}"
+      class="uk-button uk-button-primary uk-button-large uk-text-large uk-padding-small"
+    >
+      Découvrez-le
+    </a>
+  </div>
+  <div class="uk-margin-top">
+    <a
+      href=""
+      uk-icon="icon: facebook; ratio: 2.5"
+      class="uk-text-large uk-margin-right uk-link-reset"
+      style="color: #BBB !important;"
+    ></a>
+    <a
+      href=""
+      uk-icon="icon: twitter; ratio: 2.5"
+      class="uk-text-large uk-margin-right uk-link-reset"
+      style="color: #BBB !important;"
+    ></a>
+    <a
+      href=""
+      uk-icon="icon: github; ratio: 2.5"
+      class="uk-text-large uk-margin-right uk-link-reset"
+      style="color: #BBB !important;"
+    ></a>
+    <a
+      href=""
+      uk-icon="icon: instagram; ratio: 2.5"
+      class="uk-text-large uk-margin-right uk-link-reset"
+      style="color: #BBB !important;"
+    ></a>
+  </div>
 </div>
 {% endblock %}
