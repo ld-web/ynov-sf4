@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}MONSITE - {% endblock %}</title>
+    {% block stylesheets %}
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/css/uikit.min.css"
+    />
+    {% endblock %}
+  </head>
+  <body>
+    {% block nav %}{% endblock %}
+    {% block body %}{% endblock %}
+    {% block javascripts %}
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.2.6/dist/js/uikit-icons.min.js"></script>
+    {% endblock %}
+  </body>
+</html>
