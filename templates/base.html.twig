@@ -11,14 +11,9 @@
     {% endblock %}
   </head>
   <body>
-    <nav class="uk-navbar-container" uk-navbar>
-      <div class="uk-navbar-left">
-        <ul class="uk-navbar-nav">
-          <li {{ app.request.attributes.get('_route') == 'homepage' ? 'class="uk-active"' }}><a href="{{ path('homepage') }}">ACCUEIL</a></li>
-          <li {{ app.request.attributes.get('_route') == 'presentation' ? 'class="uk-active"' }}><a href="{{ path('presentation') }}">PRESENTATION</a></li>
-        </ul>
-      </div>
-    </nav>
+    {% block nav %}
+      {{ include("nav.html.twig") }}
+    {% endblock %}
     {# {{ dump(app.request) }} #}
     {% block body %}{% endblock %}
     {% block javascripts %}
