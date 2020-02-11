@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Contact;
 use App\Entity\Newsletter;
+use App\Form\ContactType;
 use App\Form\NewsletterType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -52,6 +54,34 @@ class IndexController extends AbstractController
       // Je passe à la vue le résultat de l'appel à la méthode createView
       // Sur l'instance de mon formulaire
       return $this->render('index/newsletter.html.twig', [
+        'form' => $form->createView()
+      ]);
+    }
+
+    /**
+     * @Route("/contact", name="contact")
+     */
+    public function contact(Request $request, EntityManagerInterface $em)
+    {
+      // Je crée une instance de mon entité
+      $contact = new Contact();
+
+      // Je crée une instance de formulaire
+      // Sur la base de ma classe ContactType
+      // Et je lie mon entité à ce formulaire
+      $form = $this->createForm(ContactType::class, $contact);
+
+      // Rôle principal : mapper les données du formulaire dans l'entité
+      $form->handleRequest($request);
+      if ($form->isSubmitted() && $form->isValid()) {
+        $em->persist($contact);
+        $em->flush();
+        return $this->redirectToRoute('homepage');
+      }
+
+      // Je passe à la vue le résultat de l'appel à la méthode createView
+      // Sur l'instance de mon formulaire
+      return $this->render('index/contact.html.twig', [
         'form' => $form->createView()
       ]);
     }
