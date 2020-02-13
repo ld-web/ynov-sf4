@@ -4,21 +4,37 @@
 
 {% block body %}
   <div class="uk-container">
-      <div uk-grid>
-        {% for product in products %}
-        <div class="uk-card uk-card-default">
-            <div class="uk-card-header">
-                <img src="{{ product.picture }}" alt="{{ product.name }}">
-            </div>
-            <div class="uk-card-body" style="max-width: 200px;">
-              <h3>{{ product.name }}</h3>
-              <p>
-                {{ product.description }}
-              </p>
-              <h4>{{ product.priceHT }} €</h4>
-            </div>
-        </div>
-        {% endfor %}
+    <div class="uk-margin">
+      {% if (app.request.query.get('promo') == '1') %}
+      <a href="{{ path('product_list') }}" class="uk-button uk-button-primary">
+        <span uk-icon="refresh"></span>
+        VOIR TOUS LES PRODUITS
+      </a>
+      {% else %}
+      <a href="{{ path('product_list', {promo: 1}) }}" class="uk-button uk-button-primary">
+          <span uk-icon="bolt"></span>
+          VOIR LES PROMOS
+        </a>
+      {% endif %}
+    </div>
+    <div uk-grid>
+      {% for product in products %}
+      <div class="uk-card uk-card-default">
+          <div class="uk-card-header">
+              <img src="{{ product.picture }}" alt="{{ product.name }}">
+          </div>
+          <div class="uk-card-body" style="max-width: 200px;">
+            {% if product.promo %}
+            <h4><span class="uk-badge">PROMOTION</span></h4>
+            {% endif %}
+            <h3>{{ product.name }}</h3>
+            <p>
+              {{ product.description }}
+            </p>
+            <h4>{{ product.priceHT }} €</h4>
+          </div>
       </div>
+      {% endfor %}
+    </div>
   </div>
 {% endblock %}

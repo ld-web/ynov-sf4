@@ -19,6 +19,20 @@ class ProductRepository extends ServiceEntityRepository
         parent::__construct($registry, Product::class);
     }
 
+    /**
+     * Finds all products having promo = true
+     *
+     * @return array|null
+     */
+    public function findIsPromo(): ?array
+    {
+      $qb = $this->createQueryBuilder('p')
+        ->where('p.promo = true')
+        ->getQuery();
+
+      return $qb->getResult();
+    }
+
     // /**
     //  * @return Product[] Returns an array of Product objects
     //  */
