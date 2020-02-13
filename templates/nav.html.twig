@@ -5,6 +5,13 @@
       <li {{ app.request.attributes.get('_route') == 'presentation' ? 'class="uk-active"' }}><a href="{{ path('presentation') }}">PRESENTATION</a></li>
       <li {{ app.request.attributes.get('_route') == 'product_list' ? 'class="uk-active"' }}><a href="{{ path('product_list') }}">PRODUITS</a></li>
       <li {{ app.request.attributes.get('_route') == 'contact' ? 'class="uk-active"' }}><a href="{{ path('contact') }}">CONTACT</a></li>
+      {% if (app.user) %}
+      <li>
+        <a href="{{ path('app_logout') }}" class="uk-button uk-button-primary" style="color: #FFF;">
+          Déconnexion ({{ app.user.username }})
+        </a>
+      </li>
+      {% endif %}
     </ul>
   </div>
 </nav>
